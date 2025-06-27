@@ -74,7 +74,8 @@
     npm start
     ```
     对于生产部署，你需要将步骤 4 中构建的静态文件部署到静态文件托管服务或配置 Nginx/Apache 等 Web 服务器指向该静态文件目录。
-
+## 默认账号密码：admin@qq.com----admin123
+可以在数据库改
 ## 其他说明
 -   确保你已安装最新 Node.js 和 npm 
 -   后端依赖项在 `server/package.json` 中定义。
