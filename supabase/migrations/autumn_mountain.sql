@@ -1,8 +1,11 @@
 -- Enable pgcrypto extension if not enabled
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- Drop existing users table and all dependent objects if it exists
+DROP TABLE IF EXISTS users CASCADE;
+
 -- 创建用户表
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE users (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   email text UNIQUE NOT NULL,
   password_hash text NOT NULL,
@@ -14,8 +17,8 @@ CREATE TABLE IF NOT EXISTS users (
 -- 启用RLS
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
--- Drop existing function first
-DROP FUNCTION IF EXISTS authenticate_user(text, text);
+-- Drop existing function and all dependent objects if it exists
+DROP FUNCTION IF EXISTS authenticate_user(text, text) CASCADE;
 
 -- 创建认证函数
 CREATE FUNCTION authenticate_user(
@@ -58,4 +61,4 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 -- Add initial user with correct credentials
 DELETE FROM users WHERE email = 'haige@qq.com';
 INSERT INTO users (email, password_hash)
-VALUES ('haige@qq.com', crypt('admin123', gen_salt('bf')));
+VALUES ('admin@qq.com', crypt('admin123', gen_salt('bf')));
