@@ -3,7 +3,7 @@
 ## 简介
 这是一个前后端分离的项目（适配855）。后端使用 Node.js。前端代码位于项目录，后端代码在server里。该项目使用 Supabase 作为数据库//免费的，也可以私有化部署。
 有能力的二开吧，因工作时间有限，实在没时间开发了...
-记得全局搜索"https://855部署的地址"替换自己的855地址！
+记得全局搜索"https://855部署的地址"替换自己的855地址！尤其是src/services/api.ts、和src/services/websocket.ts
 ## 部署文档
 
 ### 部署效果展示
@@ -76,6 +76,9 @@
     对于生产部署，你需要将步骤 4 中构建的静态文件部署到静态文件托管服务或配置 Nginx/Apache 等 Web 服务器指向该静态文件目录。
 ## 默认账号密码：admin@qq.com----admin123
 可以在数据库改
+## 管理员KEY修改
+-   src/services/api.ts
+-   const API_KEY = '666';//设置的管理员密码
 ## 其他说明
 -   确保你已安装最新 Node.js 和 npm 
 -   后端依赖项在 `server/package.json` 中定义。
